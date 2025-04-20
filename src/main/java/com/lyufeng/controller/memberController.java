@@ -14,9 +14,9 @@ public class memberController {
 	@Autowired
 	private memberService memberService;
 	
-	//接收查询
+	//接收GET请求，查询所有成员
 	@GetMapping("/members")
-	public Result findMembers(){
+	public Result findMembers() {
 		List<Member> all = memberService.findAll();
 		System.out.println("\033[01;34m");
 		all.forEach(System.out::println);
@@ -26,7 +26,7 @@ public class memberController {
 	
 	//接收修改 ?
 	@PutMapping("/members")
-	public Result updateMember(Member member){
+	public Result updateMember(Member member) {
 		memberService.updateMember(member);
 		System.out.println("\033[01;33m");
 		System.out.println(member);
@@ -34,16 +34,17 @@ public class memberController {
 		return Result.success();
 	}
 	
-	//接收删除
+	//接收DELETE请求，删除成员
 	@DeleteMapping("/members")
-	public Result deleteMember(Integer id){
+	public Result deleteMember(Integer id) {
 		
 		return Result.success();
 	}
 	
-	//接收新增
+	//接收POST请求，向数据库添加成员
 	@PostMapping("/members")
-	public Result addMember(Member member){
+	public Result addMember(@RequestBody Member member) {
+		System.out.println("接收到的对象是" + member);
 		int i = memberService.addMember(member);
 		System.out.println("\033[01;32m");
 		System.out.println("添加成功，影响行数:" + i);
