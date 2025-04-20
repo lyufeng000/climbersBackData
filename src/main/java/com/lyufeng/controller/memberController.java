@@ -26,7 +26,7 @@ public class memberController {
 	
 	//接收修改 ?
 	@PutMapping("/members")
-	public Result updateMember(Member member) {
+	public Result updateMember(@RequestBody Member member) {
 		memberService.updateMember(member);
 		System.out.println("\033[01;33m");
 		System.out.println(member);
