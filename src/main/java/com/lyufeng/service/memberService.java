@@ -8,4 +8,6 @@ public interface memberService {
 	public List<Member> findAll();
 	
 	public void updateMember(Member member);
+	
+	public int addMember(Member member);
 }

@@ -20,4 +20,11 @@ class BackendApplicationTests {
 		System.out.println(all);
 	}
 	
+	@Test
+	public void addTest(){
+		Member member = new Member(12,"万瑞阳","男","成员","电控开发","???","???????????","???",true);
+		int i = mapper.addMember(member);
+		System.out.println("添加成功，影响行数:" + i);
+	}
+	
 }
