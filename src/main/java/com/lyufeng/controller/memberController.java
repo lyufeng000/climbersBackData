@@ -3,11 +3,13 @@ package com.lyufeng.controller;
 import com.lyufeng.pojo.Member;
 import com.lyufeng.pojo.Result;
 import com.lyufeng.service.memberService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Slf4j
 @RestController
 public class memberController {
 	
@@ -17,11 +19,9 @@ public class memberController {
 	//接收GET请求，查询所有成员
 	@GetMapping("/members")
 	public Result findMembers() {
-		List<Member> all = memberService.findAll();
-		System.out.println("\033[01;34m");
-		all.forEach(System.out::println);
-		System.out.println("\033[0m");
-		return Result.success(all);
+		List<Member> members = memberService.findAll();
+		log.info(members.toString());
+		return Result.success(members);
 	}
 	
 	//接收修改 ?
