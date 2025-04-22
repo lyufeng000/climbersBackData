@@ -36,7 +36,7 @@ public class memberServiceImpl implements memberService {
 			System.out.println("性别修改完成");
 			flag = false;
 		}
-		if (!oldMember.getCategory().equals(newMember.getCategory())) {
+		if (!oldMember.getDept().equals(newMember.getDept())) {
 			mapper.updateCategory(newMember);
 			System.out.println("部门修改完成");
 			flag = false;
