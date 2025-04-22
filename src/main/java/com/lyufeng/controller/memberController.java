@@ -20,7 +20,9 @@ public class memberController {
 	@GetMapping("/members")
 	public Result findMembers() {
 		List<Member> members = memberService.findAll();
+		log.info("\033[01;34m接收到查询操作\033[0m");
 		log.info(members.toString());
+		log.info(Result.success(members).toString());
 		return Result.success(members);
 	}
 	
@@ -35,20 +37,18 @@ public class memberController {
 	}
 	
 	//接收DELETE请求，删除成员
-	@DeleteMapping("/members")
-	public Result deleteMember(Integer id) {
-		
+	@DeleteMapping("/members/{id}")
+	public Result deleteMember(@PathVariable Integer id) {
+		log.info("接收到删除请求，被删除的id为{}", id);
 		return Result.success();
 	}
 	
 	//接收POST请求，向数据库添加成员
 	@PostMapping("/members")
 	public Result addMember(@RequestBody Member member) {
-		System.out.println("接收到的对象是" + member);
+		log.info("接收到对象{}", member.toString());
 		int i = memberService.addMember(member);
-		System.out.println("\033[01;32m");
-		System.out.println("添加成功，影响行数:" + i);
-		System.out.println("\033[0m");
+		log.info("添加成功，影响行数:{}", i);
 		return Result.success();
 	}
 }
