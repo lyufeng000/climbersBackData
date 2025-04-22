@@ -4,7 +4,7 @@ public class Member {
 	private Integer id;
 	private String name;
 	private String gender;
-	private String category;
+	private String dept;
 	private String office;
 	private String email;
 	private String phone;
@@ -15,11 +15,11 @@ public class Member {
 	public Member() {
 	}
 	
-	public Member(Integer id, String name, String gender, String category, String office, String email, String phone, String hobby, Boolean status) {
+	public Member(Integer id, String name, String gender, String dept, String office, String email, String phone, String hobby, Boolean status) {
 		this.id = id;
 		this.name = name;
 		this.gender = gender;
-		this.category = category;
+		this.dept = dept;
 		this.office = office;
 		this.email = email;
 		this.phone = phone;
@@ -51,12 +51,12 @@ public class Member {
 		this.gender = gender;
 	}
 
-	public String getCategory() {
-		return category;
+	public String getDept() {
+		return dept;
 	}
 	
-	public void setCategory(String category) {
-		this.category = category;
+	public void setDept(String dept) {
+		this.dept = dept;
 	}
 
 	public String getOffice() {
@@ -108,7 +108,7 @@ public class Member {
 		sb.append("\n性别:");
 		sb.append(this.gender);
 		sb.append("\n部门:");
-		sb.append(this.category);
+		sb.append(this.dept);
 		sb.append("\n职位:");
 		sb.append(this.office);
 		sb.append("\n邮箱:");
