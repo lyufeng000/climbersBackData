@@ -100,26 +100,7 @@ public class Member {
 	}
 	
 	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append("\nID:");
-		sb.append(this.id);
-		sb.append("\n姓名:");
-		sb.append(this.name);
-		sb.append("\n性别:");
-		sb.append(this.gender);
-		sb.append("\n部门:");
-		sb.append(this.dept);
-		sb.append("\n职位:");
-		sb.append(this.office);
-		sb.append("\n邮箱:");
-		sb.append(this.email);
-		sb.append("\n手机号码:");
-		sb.append(this.phone);
-		sb.append("\n爱好:");
-		sb.append(this.hobby);
-		sb.append("\n状态:");
-		sb.append(this.status);
-		sb.append("\n");
-		return sb.toString();
+		return "Member{id = " + id + ", name = " + name + ", gender = " + gender + ", dept = " + dept + ", office = " + office + ", email = " + email + ", phone = " + phone + ", hobby = " + hobby + ", status = " + status + "}";
 	}
+	
 }
