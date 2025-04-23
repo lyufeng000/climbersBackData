@@ -1,10 +1,7 @@
 package com.lyufeng.mapper;
 
 import com.lyufeng.pojo.Member;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -12,7 +9,7 @@ import java.util.List;
 public interface MemberMapper {
 	/*查------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 	//查询数据库中的成员数据
-	@Select("SELECT * FROM member")
+	@Select("SELECT * FROM member ORDER BY id")
 	public List<Member> findAll();
 	
 	//通过ID查询成员
@@ -25,7 +22,7 @@ public interface MemberMapper {
 	
 	/*增------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 	//新增成员
-	@Insert("INSERT INTO member (name, gender, category, office, email, phone, hobby, status) VALUES (#{name},#{gender},#{category},#{office},#{email},#{phone},#{hobby},#{status})")
+	@Insert("INSERT INTO member (name, gender, dept, office, email, phone, hobby, status) VALUES (#{name},#{gender},#{dept},#{office},#{email},#{phone},#{hobby},#{status})")
 	public int addMember(Member member);
 	
 	/*改------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -39,8 +36,8 @@ public interface MemberMapper {
 	public void updateGender(Member newMember);
 	
 	/*---修改部门---*/
-	@Update("UPDATE member SET category = #{category} WHERE id = #{id}")
-	public void updateCategory(Member newMember);
+	@Update("UPDATE member SET dept = #{dept} WHERE id = #{id}")
+	public void updateDept(Member newMember);
 	
 	/*---修改职位---*/
 	@Update("UPDATE member SET office = #{office} WHERE id = #{id}")
@@ -61,4 +58,7 @@ public interface MemberMapper {
 	/*---修改状态---*/
 	@Update("UPDATE member SET status = #{status} WHERE id = #{id}")
 	public void updateStatus(Member newMember);
+	
+	@Delete("DELETE FROM member WHERE id = #{id}")
+	public int deleteById(Integer id);
 }
