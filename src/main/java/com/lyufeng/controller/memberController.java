@@ -21,32 +21,30 @@ public class memberController {
 	public Result findMembers() {
 		List<Member> members = memberService.findAll();
 		log.info("\033[01;34m接收到查询操作\033[0m");
-		log.info(members.toString());
 		log.info(Result.success(members).toString());
 		return Result.success(members);
 	}
 	
-	//接收修改 ?
+	//接收PUT请求，修改成员
 	@PutMapping("/members")
 	public Result updateMember(@RequestBody Member member) {
 		memberService.updateMember(member);
-		System.out.println("\033[01;33m");
-		System.out.println(member);
-		System.out.println("\033[0m");
+		log.info("接收到修改请求，请求方法\033[01;33mPut\033[0m: {}", member.getName());
 		return Result.success();
 	}
 	
 	//接收DELETE请求，删除成员
 	@DeleteMapping("/members/{id}")
 	public Result deleteMember(@PathVariable Integer id) {
-		log.info("接收到删除请求，被删除的id为{}", id);
+		memberService.deleteById(id);
+		log.info("接收到删除请求，请求方法\033[01;33mDelete，被删除的id为: \033[01;33m{}\033[0m", id);
 		return Result.success();
 	}
 	
 	//接收POST请求，向数据库添加成员
 	@PostMapping("/members")
 	public Result addMember(@RequestBody Member member) {
-		log.info("接收到对象{}", member.toString());
+		log.info("接收到对象，请求方法\033[01;33mPost\033[0m\n\033[01[34m{}\033[0m", member.toString());
 		int i = memberService.addMember(member);
 		log.info("添加成功，影响行数:{}", i);
 		return Result.success();
