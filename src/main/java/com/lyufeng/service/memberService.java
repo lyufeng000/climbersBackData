@@ -10,4 +10,6 @@ public interface memberService {
 	public void updateMember(Member member);
 	
 	public int addMember(Member member);
+	
+	public void deleteById(Integer id);
 }
