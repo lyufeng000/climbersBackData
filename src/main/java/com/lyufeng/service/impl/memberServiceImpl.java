@@ -48,11 +48,17 @@ public class memberServiceImpl implements memberService {
 			log.info("职位修改完成");
 			flag = false;
 		}
-		
 		//首先邮箱和手机号时可以为空的
 		//如果老数据为空且新数据也为空，跳过查询避免异常
 		//如果老数据为空，新数据存在，进入
-		if (oldMember.getEmail() != null && !oldMember.getEmail().equals(newMember.getEmail()) || newMember.getEmail() != null) {
+		//a
+		//a
+		/*if (oldMember.getEmail() != null && !oldMember.getEmail().equals(newMember.getEmail()) || newMember.getEmail() != null) {
+			mapper.updateEmail(newMember);
+			log.info("邮箱修改完成");
+			flag = false;
+		}*/
+		if (newMember.getEmail() != null && newMember.equals(oldMember.getEmail())) {
 			mapper.updateEmail(newMember);
 			log.info("邮箱修改完成");
 			flag = false;
